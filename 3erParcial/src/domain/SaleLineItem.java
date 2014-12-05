@@ -1,7 +1,7 @@
 package domain;
 
 class SaleLineItem {
-  private int	quantity;
+  int	quantity;
   private	ProductSpecification	productSpec;
 
    public SaleLineItem(ProductSpecification spec, int quantity )
@@ -10,6 +10,11 @@ class SaleLineItem {
 		this.quantity = quantity;
 	}
 
-	public float subtotal() { return quantity * productSpec.getPrice(); }
+	/**
+	 * @deprecated Use {@link domain.ProductSpecification#subtotal(domain.SaleLineItem)} instead
+	 */
+	public float subtotal() {
+		return productSpec.subtotal(this);
+	}
 
 }
