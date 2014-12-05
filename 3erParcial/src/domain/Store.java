@@ -6,5 +6,10 @@ public class Store {
 	private ProductCatalog productCatalog = new ProductCatalog();
 	private POST post = new POST( productCatalog );
 
-	public POST getPOST() { return post; }
+	/**
+	 * @deprecated Use {@link workflow.POST#getPOST()} instead
+	 */
+	public POST getPOST() {
+		return post.getPOST();
+	}
 }

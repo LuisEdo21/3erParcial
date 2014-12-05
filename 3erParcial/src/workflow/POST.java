@@ -46,4 +46,6 @@ public class POST {
 	{
 		return sale;
 	}
+
+	public POST getPOST() { return this; }
 }
