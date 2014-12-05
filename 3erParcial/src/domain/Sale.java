@@ -3,7 +3,7 @@ package domain;
 import java.util.*;
 
 public class Sale {
-	private Vector lineItems = new Vector();
+	Vector lineItems = new Vector();
 	private Date date = new Date();
 	private boolean isComplete = false;
 	private Payment payment;
@@ -25,16 +25,12 @@ public class Sale {
 		lineItems.addElement( new SaleLineItem( spec, quantity ) );
 	}
 
+	/**
+	 * @deprecated Use {@link domain.Payment#total(domain.Sale)} instead
+	 */
 	public float total()
 	{
-		float total = 0;
-		Enumeration	e = lineItems.elements();
-
-		while( e.hasMoreElements() )
-			{
-			total += ( (SaleLineItem) e.nextElement() ).subtotal();
-			}
-		return total;
+		return payment.total(this);
 	}
 
 	public void makePayment( float cashTendered )
